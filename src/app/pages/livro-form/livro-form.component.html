@@ -1,0 +1,131 @@
+<div class="content-container">
+  <h1>{{ titulo }}</h1>
+
+  <form [formGroup]="formulario" (ngSubmit)="salvar()" novalidate>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Título do Livro</mat-label>
+      <input
+        matInput
+        formControlName="nome do livro"
+        placeholder="Digite o nome do livro"
+      >
+
+      @if (formulario.get('titulo')?.hasError('required')) {
+        <mat-error>nome é obrigatório</mat-error>
+      }
+
+      @if (formulario.get('titulo')?.hasError('minlength')) {
+        <mat-error>O nome do livro deve ter no mínimo 3 caracteres</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Autot</mat-label>
+      <input
+        matInput
+        formControlName="autor"
+        placeholder="Digite o nome do autor"
+      >
+
+      @if (formulario.get('marca')?.hasError('required')) {
+        <mat-error>autor é obrigatório</mat-error>
+      }
+
+      @if (formulario.get('marca')?.hasError('minlength')) {
+        <mat-error>o autor deve ter no mínimo 3 caracteres</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Categoria</mat-label>
+      <input
+        matInput
+        formControlName="categoria"
+        placeholder="Ex: Fantasia, Romance, Literatura..."
+      >
+
+      @if (formulario.get('categoria')?.hasError('required')) {
+        <mat-error>Categoria é obrigatória</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Descrição</mat-label>
+      <textarea
+        matInput
+        formControlName="descricao"
+        rows="4"
+        placeholder="Digite uma breve descrição do livro">
+      </textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Preço</mat-label>
+      <input
+        matInput
+        type="number"
+        formControlName="preco"
+        placeholder="Digite o preço"
+      >
+
+      @if (formulario.get('preco')?.hasError('required')) {
+        <mat-error>Preço é obrigatório</mat-error>
+      }
+
+      @if (formulario.get('preco')?.hasError('min')) {
+        <mat-error>Preço deve ser maior que zero</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Estoque</mat-label>
+      <input
+        matInput
+        type="number"
+        formControlName="estoque"
+        placeholder="Digite a quantidade em estoque"
+      >
+
+      @if (formulario.get('estoque')?.hasError('required')) {
+        <mat-error>Estoque é obrigatório</mat-error>
+      }
+
+      @if (formulario.get('estoque')?.hasError('min')) {
+        <mat-error>Estoque não pode ser negativo</mat-error>
+      }
+
+      @if (formulario.get('estoque')?.hasError('pattern')) {
+        <mat-error>Estoque deve ser um número inteiro</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Link da imagem</mat-label>
+      <input
+        matInput
+        formControlName="imagem"
+        placeholder="Cole o link da imagem do livro"
+      >
+    </mat-form-field>
+
+    <div class="botoes">
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="formulario.invalid">
+        Salvar
+      </button>
+
+      <button
+        mat-raised-button
+        color="warn"
+        type="button"
+        (click)="cancelar()">
+        Cancelar
+      </button>
+    </div>
+
+  </form>
+</div>

@@ -1,0 +1,23 @@
+<section class="home-container">
+
+  <div class="banner">
+    <h1>Biblioteca LivroSenac</h1>
+    <p>
+      Conheça alguns livros disponíveis no nosso sistema.
+    </p>
+  </div>
+
+  <h2 class="titulo-secao">Livros em destaque</h2>
+
+  <div class="cards-container">
+    @for (livro of livros; track livro.id) {
+      <app-card-livro
+        [titulo]="livro.titulo"
+        [descricao]="livro.descricao || ''"
+        [preco]="livro.preco"
+        [imagem]="livro.imagem">
+      </app-card-livro>
+    }
+  </div>
+
+</section>

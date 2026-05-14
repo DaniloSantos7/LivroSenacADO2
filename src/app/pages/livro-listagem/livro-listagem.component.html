@@ -1,0 +1,43 @@
+<div class="content-container">
+  <h1>Listagem de Livros</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Título</th>
+        <th>Autor</th>
+        <th>Categoria</th>
+        <th>Preço</th>
+        <th>Estoque</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      @for (livro of livros; track livro.id) {
+        <tr>
+          <td>{{ livro.id }}</td>
+          <td>{{ livro.titulo }}</td>
+          <td>{{ livro.autor }}</td>
+          <td>{{ livro.categoria }}</td>
+          <td>R$ {{ livro.preco }}</td>
+          <td>{{ livro.estoque }}</td>
+          <td>
+            <button class="btn-editar" (click)="editarLivro(livro.id!)">
+              Editar
+            </button>
+
+            <button class="btn-excluir" (click)="excluirLivro(livro.id!)">
+              Excluir
+            </button>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+
+  <button class="btn-incluir" (click)="incluirLivro()">
+    Incluir Livro
+  </button>
+</div>

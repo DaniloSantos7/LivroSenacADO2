@@ -1,0 +1,21 @@
+<div class="card-livro">
+  <img
+    [src]="imagem || 'https://placehold.co/300x400?text=Livro'"
+    [alt]="titulo"
+    (error)="imagem = 'https://placehold.co/300x400?text=Livro'"
+  >
+
+  <div class="card-conteudo">
+    <h3>{{ titulo }}</h3>
+
+    <p>{{ descricao || 'Livro disponível no acervo da biblioteca.' }}</p>
+
+    <strong>
+      R$ {{ preco }}
+    </strong>
+
+    <button routerLink="/livros">
+      Ver no sistema
+    </button>
+  </div>
+</div>
